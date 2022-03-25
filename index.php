@@ -1,10 +1,21 @@
+<?php
+include_once "bd/conexion.php";
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+
+$consulta = "select id, nombre, pais, edad from personas";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute();
+$data= $resultado->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crub</title>
+    <title>DataTable</title>
 
     <link
       rel="stylesheet"
@@ -20,9 +31,8 @@
   </head>
   <body>
     <header>
-      <h3 class="text-center text-light">Crub</h3>
       <h4 class="text-center text-light">
-        CRUD con <span class="badge badge-danger"> DATATABLES</span>
+        <span class="badge badge-danger"> DATATABLES</span>
       </h4>
     </header>
     <div class="container">
@@ -54,11 +64,14 @@
                 </tr>
               </thead>
               <tbody>
+                <?php
+                foreach($data as $dat){
+                 ?>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo $dat ["id"]?></td>
+                  <td><?php echo $dat ["nombre"]?></td>
+                  <td><?php echo $dat ["pais"]?></td>
+                  <td><?php echo $dat ["edad"]?></td>
                   <td>
                     <div class="text-center">
                       <div class="btn-group">
@@ -70,6 +83,9 @@
                     </div>
                   </td>
                 </tr>
+                <?php
+                }
+                ?>
               </tbody>
             </table>
           </div>
