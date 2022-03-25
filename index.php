@@ -19,14 +19,14 @@ $data= $resultado->fetchAll(PDO::FETCH_ASSOC);
 
     <link
       rel="stylesheet"
-      href="lib/bootstrap-4.3.1-dist/css/bootstrap.min.css"
+      href="bootstrap/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="main.css" />
 
-    <link rel="stylesheet" href="lib/datatables.min.css" />
+    <link rel="stylesheet" href="datatables/datatables.min.css" />
     <link
       rel="stylesheet"
-      href="lib/DataTables-1.11.5/css/dataTables.bootstrap5.min.css"
+      href="datatables/DataTables-1.10.18/css/dataTables.bootstrap5.min.css"
     />
   </head>
   <body>
@@ -144,12 +144,12 @@ $data= $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <!-- jquery, popper,bootstrap -->
-    <script src="lib/jquery-3.6.0.min.js"></script>
-    <script src="lib/popper.min.js"></script>
-    <script src="lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!-- datables -->
-    <script type="text/javascript" src="lib/datatables.min.js"></script>
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
