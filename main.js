@@ -28,6 +28,35 @@ $(document).ready(function () {
   });
 
   $("#btnNuevo").click(function () {
+    $("#formPersonas").trigger("reset");
+    $(".modal-header").css("background-color", "#28a745");
+    $(".modal-header").css("color", "white");
+    $(".modal-title").text("Nueva Persona");
     $("#modalCRUD").modal("show");
+    id = null;
+  });
+
+  $("#formPersonas").submit(function (e) {
+    e.preventDefault();
+
+    id = $.trim($("#id").val());
+    nombre = $.trim($("#nombre").val());
+    pais = $.trim($("#pais").val());
+    edad = $.trim($("#edad").val());
+    $.ajax({
+      url: "bd/crud.php",
+      type: "POST",
+      dataType: "json",
+      data: { nombre: nombre, pais: pais, edad: edad, id: id },
+      success: function (data) {
+        //var datos = JSON.parse(data);
+        id = data[0].id;
+        nombre = data[0].nombre;
+        pais = data[0].pais;
+        edad = data[0].edad;
+        tablaPersonas.row.add([id, nombre, pais, edad]).draw();
+      },
+    });
+    $("#modalCRUD").modal("hide");
   });
 });
